@@ -16,6 +16,8 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+            if event.type == pygame.KEYDOWN:
+                bfs.proceed()
         
         win.fill((25, 25, 25))
 
