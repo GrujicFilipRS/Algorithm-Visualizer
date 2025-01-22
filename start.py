@@ -40,7 +40,7 @@ class StartPage:
         modify_start_label = customtkinter.CTkLabel(window, text='Modify start position', font=('Jaldi', 24))
         modify_start_label.place(relx=0.5, rely=0.2, anchor='center')
 
-        go_btn = customtkinter.CTkButton(window, text='See algorithm', font=('Jaldi', 20), command=lambda: handle_pygame(int(self.selected_option.get())))
+        go_btn = customtkinter.CTkButton(window, text='See algorithm', font=('Jaldi', 20), command=lambda: handle_pygame(int(self.selected_option.get()), None))
         go_btn.place(relx=0.85, rely=0.5, anchor='center')
 
         self.selected_option = customtkinter.StringVar(value='0')
