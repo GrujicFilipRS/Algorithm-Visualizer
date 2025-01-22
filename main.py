@@ -1,5 +1,5 @@
 import pygame
-from algorithm import *
+from bfs import *
 from load_fonts import load_fonts
 
 if __name__ == '__main__':
