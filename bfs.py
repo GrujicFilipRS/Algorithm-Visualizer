@@ -91,10 +91,10 @@ class BFS:
                             self.highlighted_green.append(new_coord)
 
     def draw(self, win, font) -> None:
-        ELEMENT_WIDTH = 80
-        ELEMENT_HEIGHT = 80
-        MARGIN = (30, 30)
-        OFFSET = ((1200 - len(self.elements[0]) * (ELEMENT_WIDTH + MARGIN[0]) + MARGIN[0]) / 2, (650 - len(self.elements) * (ELEMENT_HEIGHT + MARGIN[1]) + MARGIN[1]) / 2)
+        ELEMENT_WIDTH: int = 80
+        ELEMENT_HEIGHT: int = 80
+        MARGIN: tuple[int] = (30, 30)
+        OFFSET: tuple[int] = ((1200 - len(self.elements[0]) * (ELEMENT_WIDTH + MARGIN[0]) + MARGIN[0]) // 2, (650 - len(self.elements) * (ELEMENT_HEIGHT + MARGIN[1]) + MARGIN[1]) // 2)
         for i in range(len(self.elements)):
             for j in range(len(self.elements[0])):
                 color = (255, 255, 255)
