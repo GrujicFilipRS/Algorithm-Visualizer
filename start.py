@@ -6,10 +6,11 @@ from display_handler import handle_pygame
 class Option:
     options = []
 
-    def __init__(self, id, name, description):
+    def __init__(self, id, name, description, startpos):
         self.id = id
         self.name = name
         self.description = description
+        self.startpos = startpos
         Option.options.append(self)
     
     @abstractmethod
@@ -21,9 +22,9 @@ class Option:
 
 class StartPage:
     def __init__(self) -> None:
-        Option(0, 'BFS', 'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'),
-        Option(1, 'DFS', 'DFS Desc'),
-        Option(2, 'test 1', 'test 1 Desc'),
+        Option(0, 'BFS', 'Breadth-First Search (BFS) is a graph traversal algorithm that explores nodes level by level, starting from a source node, using a queue to ensure the shortest path in unweighted graphs.', None),
+        Option(1, 'DFS', 'DFS Desc', None),
+        Option(2, 'test 1', 'test 1 Desc', None),
 
     def show(self) -> None:
         font = tkinter_fonts()
@@ -49,8 +50,11 @@ class StartPage:
                                                       value=str(option.id), font=('Jaldi', 17), command=self.change_option)
             self.alg_option.place(relx=0.16, rely=0.25+0.04*i, anchor='center')
         
-        self.desc_label = customtkinter.CTkLabel(window, text=Option.find(0).description, font=('Jaldi', 14), wraplength=250)
+        self.desc_label = customtkinter.CTkLabel(window, text=Option.find(0).description, font=('Jaldi', 12), wraplength=250)
         self.desc_label.place(relx=0.2, rely=0.97, anchor='s')
+
+        self.start_pos_txtbox = customtkinter.CTkTextbox(window, font=('Jaldi', 36))
+        self.start_pos_txtbox.place(relx=0.5, rely=0.37, anchor='center')
 
         window.mainloop()
     
