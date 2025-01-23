@@ -17,10 +17,29 @@ class BFS:
         self.highlighted_blue: list[list[int]] = []
 
         self.elements_completed = []
+    
+    def verify_start_pos(self, start_pos) -> int:
+        if type(start_pos) != type([]):
+            return 2 # Incorrect type/format of starting position
+
+        if len(start_pos) != 4:
+            return 3 # Incorrect length of outer string
+
+        try:
+            if len(start_pos[0]) != 5:
+                return 4 # Incorrect length of inner string
+        except:
+            return 5 # Must be 2 dimensional graph
+
+        for i in range(len(start_pos)):
+            for j in range(len(start_pos)):
+                if start_pos[i][j] not in [0, 1]:
+                    return 6 # Incorrect value of elements of inner lists
+        
+        return 0
 
     def proceed(self) -> None:
         if self.current_ind == [len(self.elements)-1, len(self.elements[0])-1]:
-            print("All done")
             return
 
         def increment_current_ind() -> bool:
@@ -73,9 +92,6 @@ class BFS:
                 
                 if self.clearing and len(self.highlighted_green) == 0:
                     self.clearing = False
-                    if increment_current_ind():
-                        print("all done")
-                        return
             else:
                 coords: list[list[int]] = self.highlighted_green[:]
                 
