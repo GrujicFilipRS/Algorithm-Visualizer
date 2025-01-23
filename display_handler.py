@@ -24,7 +24,7 @@ def handle_pygame(id, start_pos) -> int:
 
     pygame.init()
     font = load_fonts()
-    win = pygame.display.set_mode((1200, 650))
+    win = pygame.display.set_mode((1200, 650), pygame.NOFRAME)
     pygame.display.set_caption('Algorithm visualizer')
     pygame.display.set_icon(pygame.image.load('./resources/icon.png'))
 
@@ -34,7 +34,12 @@ def handle_pygame(id, start_pos) -> int:
                 pygame.quit()
                 return 0
             if event.type == pygame.KEYDOWN:
-                algorithm.proceed()
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    return 0
+                if algorithm.proceed() == 0:
+                    pygame.quit()
+                    return 0
 
         win.fill((25, 25, 25))
         

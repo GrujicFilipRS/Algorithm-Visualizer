@@ -3,7 +3,7 @@ import customtkinter
 
 def load_fonts():
     fonts = {}
-    for i in range(0, 33, 2):
+    for i in range(0, 65, 2):
         fonts[i] = pygame.font.Font('./resources/Jaldi-Regular.ttf', i)
     return fonts
 

@@ -40,7 +40,7 @@ class BFS:
 
     def proceed(self) -> None:
         if self.current_ind == [len(self.elements)-1, len(self.elements[0])-1]:
-            return
+            return 0
 
         def increment_current_ind() -> bool:
             self.current_ind[1] += 1
@@ -125,3 +125,12 @@ class BFS:
                 pygame.draw.circle(win, color, circle_pos, ELEMENT_WIDTH / 2, 1)
                 text = font[32].render(f'{self.elements[i][j]}', True, color, None)
                 win.blit(text, (pos[0] + ELEMENT_WIDTH / 2 - text.get_width() / 2, pos[1] + ELEMENT_HEIGHT / 2 - text.get_height() / 2))
+        
+        continue_txt: pygame.Surface = font[28].render('Press any key to step forward', True, (255, 255, 255), None)
+        continue_txt_pos = [600 - continue_txt.get_width() // 2, 550]
+        if self.animation_ind == 0:
+            win.blit(continue_txt, continue_txt_pos)
+        
+        esc_txt: pygame.Surface = font[16].render('Press ESC to leave the visualization', True, (150, 0, 0), None)
+        esc_txt_pos = [5, 625]
+        win.blit(esc_txt, esc_txt_pos)
