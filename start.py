@@ -35,6 +35,7 @@ class StartPage:
         font = tkinter_fonts()
         window = customtkinter.CTk()
         window.title('Algorithm visualizer')
+        window.resizable(False, False)
         window.geometry('800x700')
 
         title_label = customtkinter.CTkLabel(window, text='Algorithm visualizer', font=('Jaldi', 36))
@@ -63,10 +64,18 @@ class StartPage:
         self.start_pos_txtbox = customtkinter.CTkTextbox(window, font=('Jaldi', 14))
         self.start_pos_txtbox.place(relx=0.5, rely=0.37, anchor='center')
 
+        default_start_btn = customtkinter.CTkButton(window, text='Default', font=('Jaldi', 16), width=75, height=30, command=self.start_to_default)
+        default_start_btn.place(relx=0.5, rely=0.55, anchor='center')
+
         self.change_option()
 
         window.mainloop()
     
+    def start_to_default(self):
+        self.start_pos_value.set(Option.find(self.selected_option.get()).startpos)
+        self.start_pos_txtbox.delete(1.0, customtkinter.END)
+        self.start_pos_txtbox.insert(customtkinter.END, self.start_pos_value.get())
+
     def change_option(self):
         self.desc_label.configure(text=Option.find(self.selected_option.get()).description)
         self.start_pos_txtbox.delete(1.0, customtkinter.END)
