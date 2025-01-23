@@ -117,9 +117,9 @@ class BFS:
                 if [i, j] in self.highlighted_red:
                     color = (255, 0, 0)
                 elif [i, j] in self.highlighted_blue:
-                    color = (0, 0, 255)
+                    color = (0, 150, 255)
                 elif [i, j] in self.highlighted_green:
-                    color = (0, 255, 0)
+                    color = (0, 200, 0)
                 pos = (j * ELEMENT_WIDTH + OFFSET[0] + MARGIN[0] * j, i * ELEMENT_HEIGHT + OFFSET[1] + MARGIN[0] * i)
                 circle_pos = (j * ELEMENT_WIDTH + OFFSET[0] + ELEMENT_WIDTH / 2 + MARGIN[0] * j, i * ELEMENT_HEIGHT + OFFSET[1] + ELEMENT_HEIGHT / 2 + MARGIN[0] * i)
                 pygame.draw.circle(win, color, circle_pos, ELEMENT_WIDTH / 2, 1)
