@@ -2,6 +2,7 @@ import customtkinter
 from load_fonts import tkinter_fonts
 from abc import abstractmethod
 from display_handler import handle_pygame
+from PIL import Image, ImageTk
 
 class Option:
     options = []
@@ -34,6 +35,7 @@ class StartPage:
     def show(self) -> None:
         font = tkinter_fonts()
         window = customtkinter.CTk()
+        window.after(201, lambda :window.iconbitmap('./resources/icon.ico'))
         window.title('Algorithm visualizer')
         window.resizable(False, False)
         window.geometry('800x700')

@@ -24,8 +24,9 @@ def handle_pygame(id, start_pos) -> int:
 
     pygame.init()
     font = load_fonts()
-    win = pygame.display.set_mode((1200, 650), pygame.RESIZABLE)
+    win = pygame.display.set_mode((1200, 650))
     pygame.display.set_caption('Algorithm visualizer')
+    pygame.display.set_icon(pygame.image.load('./resources/icon.png'))
 
     while True:
         for event in pygame.event.get():
