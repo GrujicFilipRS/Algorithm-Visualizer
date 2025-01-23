@@ -1,4 +1,3 @@
-from bfs import *
 from start import StartPage
 
 if __name__ == '__main__':
