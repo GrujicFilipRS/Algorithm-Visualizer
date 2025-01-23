@@ -30,7 +30,12 @@ class StartPage:
     def handle_transition(self):
         startpos = self.start_pos_txtbox.get(1.0, customtkinter.END)
         status = handle_pygame(int(self.selected_option.get()), startpos)
-        print(f'Status code: {status}')
+        if status == 0:
+            self.error_code_txt.configure(text='')
+        elif status == 1:
+            self.error_code_txt.configure(text='Invalid format of starting position')
+        elif status == 2:
+            self.error_code_txt.configure(text='Incorrect type/format of starting position')
 
     def show(self) -> None:
         font = tkinter_fonts()
@@ -68,6 +73,9 @@ class StartPage:
 
         default_start_btn = customtkinter.CTkButton(window, text='Default', font=('Jaldi', 16), width=75, height=30, command=self.start_to_default)
         default_start_btn.place(relx=0.5, rely=0.55, anchor='center')
+
+        self.error_code_txt = customtkinter.CTkLabel(window, text='', font=('Jaldi', 14), text_color='darkred', wraplength=250)
+        self.error_code_txt.place(relx=0.5, rely=0.58, anchor='n')
 
         self.change_option()
 

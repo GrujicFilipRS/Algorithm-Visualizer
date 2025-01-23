@@ -23,18 +23,19 @@ class BFS:
             return 2 # Incorrect type/format of starting position
 
         if len(start_pos) != 4:
-            return 3 # Incorrect length of outer string
+            return 2 # Incorrect length of outer string
 
         try:
-            if len(start_pos[0]) != 5:
-                return 4 # Incorrect length of inner string
+            for i in start_pos:
+                if len(i) != 5:
+                    return 2 # Incorrect length of inner string
         except:
-            return 5 # Must be 2 dimensional graph
+            return 2 # Must be 2 dimensional graph
 
         for i in range(len(start_pos)):
             for j in range(len(start_pos)):
                 if start_pos[i][j] not in [0, 1]:
-                    return 6 # Incorrect value of elements of inner lists
+                    return 2 # Incorrect value of elements of inner lists
         
         return 0
 
