@@ -55,14 +55,12 @@ class BubbleSort:
             win.blit(value_txt, pos_value_txt)
     
     def proceed(self):
-        
-        
         if self.animation_ind == 0:
-            self.highlighted_red += self.current_inds
+            self.highlighted_blue += self.current_inds
             self.animation_ind += 1
             return
         
-        if len(self.highlighted_red) != 0: # There is something to be checked (and flipped)
+        if len(self.highlighted_blue) != 0: # There is something to be checked (and flipped)
             self.highlighted_blue.clear()
 
             i = self.current_inds[0]
@@ -79,14 +77,14 @@ class BubbleSort:
                 self.current_inds = [0, 1]
                 if self.elements == sorted(self.elements):
                     return 0
-            self.highlighted_red.clear()
-            self.highlighted_red += self.current_inds
+            self.highlighted_blue.clear()
+            self.highlighted_blue += self.current_inds
             self.animation_ind += 1
             return
         
         # There is something to be highlighted
         self.highlighted_blue.clear()
-        self.highlighted_red += self.current_inds
+        self.highlighted_blue += self.current_inds
         
         self.animation_ind += 1
     
