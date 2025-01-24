@@ -23,5 +23,6 @@ Go onto [the releases section](https://github.com/GrujicFilipRS/Algorithm-Visual
 Run the file using `python main.py` (if downloaded through source code) or just run the executable.
 
 Choose what algorithm to run, choose it's starting state, and press **See algorithm**.
+
 ![Main window](resources/usage_1.png)
 ![Algorithm visualization](resources/usage_2.png)
