@@ -24,7 +24,7 @@ class StartPage:
     def __init__(self) -> None:
         Option(0, 'BFS', 'Breadth-First Search (BFS) is a graph traversal algorithm that explores nodes level by level, starting from a source node, using a queue to ensure the shortest path in unweighted graphs.', '[\n\t[0, 0, 1, 1, 0],\n\t[0, 0, 1, 1, 0],\n\t[1, 1, 0, 1, 1],\n\t[1, 1, 1, 0, 0]\n]'),
         Option(1, 'Bubble sort', 'Bubble sort repeatedly compares and swaps adjacent elements to sort a list. Smaller elements "bubble" up, while larger ones sink down. It\'s simple but slow for large datasets.', '[\n\t5, 4, 7, 3, 2, 1, 8, 6\n]'),
-        Option(2, 'test 1', 'test 1 Desc', 'test1 start pos'),
+        Option(2, 'Insertion sort', 'Insertion sort builds a sorted list one element at a time by picking the next element and inserting it into its correct position among the already sorted elements.', '[\n\t5, 4, 7, 3, 2, 1, 8, 6\n]'),
 
     def handle_transition(self):
         startpos = self.start_pos_txtbox.get(1.0, customtkinter.END)
@@ -62,7 +62,7 @@ class StartPage:
         for i, option in enumerate(Option.options):
             self.alg_option = customtkinter.CTkRadioButton(window, text=option.name, variable=self.selected_option,
                                                       value=str(option.id), font=('Jaldi', 17), command=self.change_option)
-            self.alg_option.place(relx=0.16, rely=0.25+0.04*i, anchor='center')
+            self.alg_option.place(relx=0.1, rely=0.25+0.04*i, anchor='w')
         
         self.desc_label = customtkinter.CTkLabel(window, text=Option.find(0).description, font=('Jaldi', 12), wraplength=250)
         self.desc_label.place(relx=0.2, rely=0.97, anchor='s')

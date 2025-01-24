@@ -3,6 +3,7 @@ from load_fonts import load_fonts
 
 from bfs import BFS
 from bubble_sort import BubbleSort
+from insertion_sort import InsertionSort
 
 algorithm = None
 
@@ -20,6 +21,8 @@ def handle_pygame(id, start_pos) -> int:
         algorithm = BFS()
     elif id == 1:
         algorithm = BubbleSort()
+    elif id == 2:
+        algorithm = InsertionSort()
 
     startpos_status = algorithm.verify_start_pos(true_start)
     if startpos_status != 0: return startpos_status
