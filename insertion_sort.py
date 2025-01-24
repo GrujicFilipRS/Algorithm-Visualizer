@@ -5,7 +5,9 @@ class InsertionSort:
         self.elements: list[int] = [6, 4, 3, 7, 2, 8, 1, 5]
         self.animation_ind: int = 0
 
-        self.current_inds: list[int] = [0, 1]
+        self.current_ind: list[int] = 0
+        self.num_sorted: int = 0
+        
         self.highlighted_red: list[int] = []
         self.highlighted_green: list[int] = []
         self.highlighted_blue: list[int] = []
@@ -43,10 +45,10 @@ class InsertionSort:
 
         for i, value in enumerate(self.elements):
             color = (255, 255, 255)
-            if i in self.highlighted_green:
-                color = (0, 200, 0)
             if i in self.highlighted_blue:
                 color = (0, 150, 255)
+            if i in self.highlighted_green:
+                color = (0, 200, 0)
             if i in self.highlighted_red:
                 color = (255, 0, 0)
             pygame.draw.rect(win, color, pygame.Rect(OFFSET[0]+i*(ELEMENT_WIDTH+ELEMENT_GAP), OFFSET[1] + (8 - value) * ELEMENT_HEIGHT_SEGMENT, ELEMENT_WIDTH, ELEMENT_HEIGHT_SEGMENT * value))
@@ -55,36 +57,29 @@ class InsertionSort:
             win.blit(value_txt, pos_value_txt)
     
     def proceed(self):
-        if self.animation_ind == 0:
-            self.highlighted_blue += self.current_inds
-            self.animation_ind += 1
-            return
-        
-        if len(self.highlighted_blue) != 0: # There is something to be checked (and flipped)
-            self.highlighted_blue.clear()
+        if self.current_ind >= len(self.elements):
+            return 0
 
-            i = self.current_inds[0]
-            j = self.current_inds[1]
-            a = self.elements[i]
-            b = self.elements[j]
-            if a > b:
-                self.elements[i] = b
-                self.elements[j] = a
-            
-            #self.highlighted_blue += self.current_inds
-            self.current_inds = [j, j + 1]
-            if j + 1 >= len(self.elements):
-                self.current_inds = [0, 1]
-                if self.elements == sorted(self.elements):
-                    return 0
-            self.highlighted_blue.clear()
-            self.highlighted_blue += self.current_inds
+        def insert():
+            self.highlighted_blue.append(self.current_ind + 1)
+            for i in range(self.num_sorted):
+                if self.elements[i] > self.elements[self.current_ind]:
+                    val = self.elements[self.current_ind]
+                    self.elements.pop(self.current_ind)
+                    self.elements.insert(i, val)
+                    break
+            self.num_sorted += 1
+            self.current_ind += 1
+
+        if self.animation_ind == 0:
+            self.num_sorted += 1
             self.animation_ind += 1
+            self.current_ind = 1
+            self.highlighted_blue.append(self.current_ind)
+            self.highlighted_green = range(self.num_sorted)
             return
-        
-        # There is something to be highlighted
-        self.highlighted_blue.clear()
-        self.highlighted_blue += self.current_inds
-        
-        self.animation_ind += 1
+
+        insert()
+
+        self.highlighted_green = range(self.num_sorted)
     
