@@ -73,7 +73,7 @@ class BubbleSort:
                 self.elements[i] = b
                 self.elements[j] = a
             
-            self.highlighted_blue += self.current_inds
+            #self.highlighted_blue += self.current_inds
             self.current_inds = [j, j + 1]
             if j + 1 >= len(self.elements):
                 self.current_inds = [0, 1]
