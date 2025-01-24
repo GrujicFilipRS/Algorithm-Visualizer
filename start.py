@@ -2,7 +2,6 @@ import customtkinter
 from load_fonts import tkinter_fonts
 from abc import abstractmethod
 from display_handler import handle_pygame
-from PIL import Image, ImageTk
 
 class Option:
     options = []
@@ -24,7 +23,7 @@ class Option:
 class StartPage:
     def __init__(self) -> None:
         Option(0, 'BFS', 'Breadth-First Search (BFS) is a graph traversal algorithm that explores nodes level by level, starting from a source node, using a queue to ensure the shortest path in unweighted graphs.', '[\n\t[0, 0, 1, 1, 0],\n\t[0, 0, 1, 1, 0],\n\t[1, 1, 0, 1, 1],\n\t[1, 1, 1, 0, 0]\n]'),
-        Option(1, 'DFS', 'DFS Desc', 'DFS start pos'),
+        Option(1, 'Bubble sort', 'Bubble sort repeatedly compares and swaps adjacent elements to sort a list. Smaller elements "bubble" up, while larger ones sink down. It\'s simple but slow for large datasets.', '[\n\t5, 4, 7, 3, 2, 1, 8, 6\n]'),
         Option(2, 'test 1', 'test 1 Desc', 'test1 start pos'),
 
     def handle_transition(self):
@@ -38,7 +37,7 @@ class StartPage:
             self.error_code_txt.configure(text='Incorrect type/format of starting position')
 
     def show(self) -> None:
-        font = tkinter_fonts()
+        tkinter_fonts()
         window = customtkinter.CTk()
         window.after(201, lambda :window.iconbitmap('./resources/icon.ico'))
         window.title('Algorithm visualizer')
